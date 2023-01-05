@@ -4,10 +4,10 @@
     Arguments: lst: Sequence[Any]"""
 
 
-import typing
+from typing import Union, Sequence, Any
 
 
-def safe_first_element(lst: typing.Sequence[typing.Any]) -> typing.Union[typing.Any, None]:
+def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
     """Return the first element of lst if there is any, otherwise None."""
     if lst:
         return lst[0]
