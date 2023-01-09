@@ -1,25 +1,20 @@
 #!/usr/bin/env python3
-"""
-Task 4's module.
-"""
-# import asyncio
+"""Contains a method that spawns Tasks n times with a
+specified delay between each call."""
+import asyncio
 from typing import List
 
-
 task_wait_random = __import__('3-tasks').task_wait_random
-wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
+    """Spawns wait_random n times with a specified delay
+    between each call.
+    Args:
+        n: number of times to spawn wait_random
+        max_delay: maximum delay between each call
+    Returns:
+        list of delays
     """
-    :return: a list of all the delays
-    """
-    list_of_delays = []
-    for i in range(n):
-        delay1 = await wait_random(max_delay)
-        # list_of_delays.append(delay1)
-        delay2 = await task_wait_random(max_delay)
-        # list_of_delays.append(delay2)
-        delays = delay1 + delay2
-        list_of_delays.append(delays)
-    return sorted(list_of_delays)
+    tasks = [task_wait_random(max_delay) for _ in range(n)]
+    return [await task for task in asyncio.as_completed(tasks)]
