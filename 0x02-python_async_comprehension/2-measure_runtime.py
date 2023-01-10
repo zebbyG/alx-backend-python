@@ -17,4 +17,3 @@ async def measure_runtime() -> float:
     next_time = time()
 
     return next_time - first_time
-
