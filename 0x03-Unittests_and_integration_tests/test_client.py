@@ -103,7 +103,7 @@ class TestGithubOrgClient(unittest.TestCase):
                     "kratu",
                 ],
             )
-             mock_public_repos_url.assert_called_once()
+            mock_public_repos_url.assert_called_once()
         mock_get_json.assert_called_once()
 
     @parameterized.expand([
